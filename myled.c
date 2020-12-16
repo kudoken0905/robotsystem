@@ -6,7 +6,7 @@
 #include <linux/io.h>
 #include <linux/delay.h>
 
-MODULE_AUTHOR("Ryuichi Ueda");
+MODULE_AUTHOR("Kenta Kudo and Ryuichi Ueda and Yuya Hasegawa and Takaya Sakamoto");
 MODULE_DESCRIPTION("driver for LED control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
@@ -44,7 +44,7 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 			 }
 		}	 
 		gpio_base[10] = 1 << 25;
-	}else{
+	}/*else{					//動作判別のために認識しない場合点滅させる
 		for(i = 0; i < 7; i++){
 			 gpio_base[7] = 1 << 25;
 			 msleep(100);
@@ -52,7 +52,7 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 			 msleep(100);
 		}
 		gpio_base[10] = 1 << 25;
-	}
+	}*/
 	 return 1;
 }
 
